@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>fReader</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/assets/img/favicon.ico" rel="icon">
+  <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    {% include 'nav.html' %}
+
+    </div>
+
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="user" class="d-flex justify-content-center">
+    <div class="overflow-y-auto container d-flex bg-user p-5 m-5 rounded flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
+      
+      <h1>Add Book</h1>
+      <form action="/savebook/" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <img src="{{book.thumbnail}}" alt="thumbnail">
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label  "><strong>Title:</strong></label>
+          <span class=" ">{{book.title}}</span>
+          <input type="hidden" name="title" value="{{book.title}}">
+          <input type="hidden" name="thumbnail" value="{{book.thumbnail}}">
+          <input type="hidden" name="id" value="{{book.id}}">
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label  "><strong>Subtitle:</strong></label>
+          <span class=" ">{{book.subtitle}}</span>
+          <input type="hidden" name="subtitle" value="{{book.subtitle}}">
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label  "><strong>Authors:</strong></label>
+          <span class=" ">{{book.authors}}</span>
+          <input type="hidden" name="authors" value="{{book.authors}}">
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label  "><strong>Publisher:</strong></label>
+          <span class=" ">{{book.publisher}}</span>
+          <input type="hidden" name="publisher" value="{{book.publisher}}">
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label  "><strong>Date Published:</strong></label>
+          <span class=" ">{{book.publishdate}}</span>
+          <input type="hidden" name="publishedDate" value="{{book.publishdate}}">
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label  "><strong>Description:</strong></label>
+          <span class=" ">{{book.description}}</span>
+          <input type="hidden" name="description" value="{{book.description}}">
+          
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label  "><strong>Rating:</strong></label>
+            <select class="form-select" name="rating" aria-label="Default select example">
+              <option selected>Add your Rating</option>
+              <option value="1"><i class="bi bi-star-fill"></i> 1 Star Rating</option>
+              <option value="2"><i class="bi bi-star-fill"></i> 2 Star Rating</option>
+              <option value="3"><i class="bi bi-star-fill"></i> 3 Star Rating</option>
+              <option value="4"><i class="bi bi-star-fill"></i> 4 Star Rating</option>
+              <option value="5"><i class="bi bi-star-fill"></i> 5 Star Rating</option>
+            </select>
+            
+          </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label  "><strong>Started Reading:</strong></label>
+            <input type="date" class="form-control" name="start_date">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label  "><strong>Ended Reading:</strong></label>
+            <input type="date" class="form-control" name="end_date">
+            
+          </div>
+          <button type="submit" id="detailsbutton">Submit</button>
+      </form>
+    
+    </div>
+  </section><!-- End Hero -->
+
+  <!-- ======= Footer ======= -->
+  {% include 'footer.html' %}
+  <!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/static/assets/vendor/aos/aos.js"></script>
+  <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/static/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="/static/assets/vendor/php-email-form/validate.js"></script>
+  
+
+  
+
+  <!-- Template Main JS File -->
+  <script src="/static/assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+{% load static %}
+<div class="container-fluid d-flex justify-content-between align-items-center">
+
+    <!-- <h1 class="logo me-auto me-lg-0"><a href="index.html">fReader</a></h1> -->
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <a href="/" class="logo"><img src="/static/assets/img/logo.png" alt="" class="img-fluid"></a>
+
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/search/">Search</a></li>
+        <li><a href="/mylib/">My Library</a></li>
+        <li><a href="https://github.com/Abdullah-coder2013/dReader/"><i class="bi bi-github"></i></a></li>
+      </ul>
+        
+        
+        
+      
+      
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    {% if user %}
+          <div class="header-social-links">
+            <a class="btn logo" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{% static 'assets/img/defaultusericon.png' %}" class="img-fluid" alt="">
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/user/">View Profile</a></li>
+              <li><a class="dropdown-item" href="/logout/">Logout</a></li>
+            </ul>
+          </div>
+        {% else %}
+          <div class="header-social-links">
+            <a href="/login/">Login</a>
+            
+          </div>
+        {% endif %}
+        
+  </div><!-- .navbar -->
+
+    
