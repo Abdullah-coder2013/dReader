@@ -1,14 +1,11 @@
 from django.shortcuts import render, redirect
-from django.template import loader
-from django.http import HttpResponse
 import requests
-from django.core.files.storage import default_storage
-from django.conf import settings
 from .forms import SearchForm, LoginForm, SignupForm, EditUserForm
 from .books import BookObject, RBook
 from .models import Book, User
 from datetime import datetime
 from .utitlities import hashgen, reformat_date
+
 # Create your views here.
 
 def homeview(request):
@@ -19,7 +16,7 @@ def searchview(request):
         form = SearchForm(request.POST)
         if form.is_valid():
             query = form.cleaned_data['searchfield']
-            result = requests.get(f"https://www.googleapis.com/books/v1/volumes?q={query}&key=#APIKEY").json()
+            result = requests.get(f"https://www.googleapis.com/books/v1/volumes?q={query}&key=AIzaSyAopt9TPwB3x_wIObGU-kczXh4petc66B4").json()
             books = []
             for item in result["items"]:
                 volume_info = item.get("volumeInfo", {})
@@ -134,7 +131,6 @@ def savebookview(request):
     publishDate = request.POST.get('publishedDate')
     thumbnail = request.POST.get('thumbnail')
     description = request.POST.get('description')
-    id = request.POST.get('id')
     rating = request.POST.get('rating')
     start_date = request.POST.get('start_date')
     end_date = request.POST.get('end_date')
@@ -180,7 +176,7 @@ def editview(request):
     start_date = reformat_date(request.POST.get('start_date'))
     try:
         end_date = reformat_date(request.POST.get('end_date'))
-    except:
+    except (ValueError, TypeError):
         end_date = None
     book = RBook(title=title, publishdate=publishDate, subtitle=subtitle, publisher=publisher, authors=authors, thumbnail=thumbnail, description=description, id=id, rating=rating, start_date=start_date, end_date=end_date)
     return render(request, 'edit.html', {'book': book, 'user': request.COOKIES.get('sessioncookie')})
@@ -191,8 +187,6 @@ def edit(request):
     end_date = request.POST.get('end_date')
     Book.objects.filter(id=request.POST.get('id')).update(rating=rating, started_reading=start_date, ended_reading=end_date)
     return redirect('/mylib/')
-<<<<<<< HEAD
-=======
 
 def userview(request):
     user = User.objects.get(id=request.COOKIES.get('sessioncookie'))
@@ -206,21 +200,21 @@ def usereditview(request):
                 username = form.cleaned_data['username']
                 if username != '':
                     User.objects.filter(id=request.COOKIES.get('sessioncookie')).update(username=username)
-            except:
+            except Exception:
                 pass
             
             try:
                 email = form.cleaned_data['email']
                 if email != '':
                     User.objects.filter(id=request.COOKIES.get('sessioncookie')).update(email=email)
-            except:
+            except Exception:
                 pass
             
             try:
                 password = form.cleaned_data['password']
                 if password != '':
                     User.objects.filter(id=request.COOKIES.get('sessioncookie')).update(password=password)
-            except:
+            except Exception:
                 pass
             return redirect('/user/')
     else:
@@ -236,4 +230,4 @@ def deleteuserview(request):
     user = User.objects.get(id=request.COOKIES.get('sessioncookie'))
     user.delete()
     return redirect('/')
->>>>>>> 2bb7399 (added user profile page, change whole size of page)
+
