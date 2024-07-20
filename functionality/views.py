@@ -213,7 +213,7 @@ def usereditview(request):
             try:
                 password = form.cleaned_data['password']
                 if password != '':
-                    User.objects.filter(id=request.COOKIES.get('sessioncookie')).update(password=password)
+                    User.objects.filter(id=request.COOKIES.get('sessioncookie')).update(password=hashgen(password))
             except Exception:
                 pass
             return redirect('/user/')
@@ -231,3 +231,9 @@ def deleteuserview(request):
     user.delete()
     return redirect('/')
 
+# skipcq: PYL-W0613
+def error404view(request, exception):
+    return render(request, '404.html')
+
+def error500view(request):
+    return render(request, '500.html')

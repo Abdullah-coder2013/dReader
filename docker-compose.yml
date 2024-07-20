@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    command: gunicorn dReader.wsgi -w 4 -b 0.0.0.0:8000
+    restart: unless-stopped
+    volumes:
+      - ./db.sqlite3:/app/db.sqlite3
+    env_file:
+      - app.env
+    ports:
+      - 8000:8000    
+
+  caddy:
+    image: caddy:2.4.5-alpine
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./caddy_data:/data
+      - ./caddy_config:/config
+      - ./functionality/static:/static

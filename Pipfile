@@ -9,6 +9,7 @@ requests = "*"
 pillow = "*"
 python-dotenv = "*"
 pyyaml = "*"
+gunicorn = "*"
 
 [dev-packages]
 

@@ -40,3 +40,6 @@ urlpatterns = [
     path('user/delete/', deleteuserview),
     path('logout/', logoutview),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'functionality.views.error404view'
+handler500 = 'functionality.views.error500view'
