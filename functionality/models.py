@@ -10,7 +10,7 @@ class Book(models.Model):
     publisher = models.CharField(max_length=100)
     authors = models.CharField(max_length=100)
     thumbnail = models.CharField(max_length=100)
-    description = models.CharField(max_length=500)
+    description = models.TextField()
     rating = models.IntegerField(null=True)
     started_reading = models.DateField(max_length=100)
     ended_reading = models.DateField(max_length=100, null=True)
