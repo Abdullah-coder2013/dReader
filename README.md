@@ -27,8 +27,7 @@ git clone https://github.com/Abdullah-coder2013/dReader.git
 ```
 Go inside the cloned folder and run:
 ```bash
-pip install django
-pip install requests
+pip install ./requirements.txt
 ```
 Then run: 
 ```bash
