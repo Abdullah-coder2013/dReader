@@ -32,20 +32,23 @@ pip install requests
 ```
 Then run: 
 ```bash
-python manage.py runserver
+python manage.py runserver --insecure
 ```
+<em>Note: The insecure argument has been added, because django will not serve static files in production without the help of Gunicorn, Apache or NginX</em>
 
 
 ## Dependencies
 
 - **django**
+- **Gunicorn**
 - **requests**
 - **Python**
+- **Docker**
 - **Bootstrap**
 
 ## Features
 
-- Reading a book can feel more exciting.
+- Reading a book can feel more exciting when you are tracking it.
 - You can keep track what you read.
 
 
