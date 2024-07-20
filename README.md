@@ -1,7 +1,6 @@
  <p align="center">
   <img src="/functionality/static/assets/img/logoforreadme.png"/>
 </p>
-<h1 align="center">dReader</h1>
 
 <p align="center">
  <a href="https://books.google.com"><img src="https://img.shields.io/badge/Go_to-API-purple"></a> <a href="https://abdullah.abdulmunim.com"><img src="https://img.shields.io/badge/Go_to-My_Personal_Site-orange"></a><a href="https://app.deepsource.com/gh/Abdullah-coder2013/dReader/?ref=repository-badge"> <img src="https://app.deepsource.com/gh/Abdullah-coder2013/dReader.svg/?label=resolved+issues&show_trend=true&token=SyNYYd0As72tadjQDZPP-AMJ"/></a> <a href="https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates"><img src="https://camo.githubusercontent.com/7f4aec020ec1dccb8ae5c9479116a9a403ce460ee1674a4379dea2cbc11962ff/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f446570656e6461626f742d656e61626c65642d626c75652e737667"/>
