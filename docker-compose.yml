@@ -1,15 +1,18 @@
 services:
   app:
     build: .
+    container_name: dreader-app
     command: gunicorn dReader.wsgi -w 4 -b 0.0.0.0:8000
     restart: unless-stopped
     volumes:
-      - ./db.sqlite3:/app/db.sqlite3
+      - ./db/db.sqlite3:/app/db/db.sqlite3
     env_file:
       - app.env
     ports:
-      - 8000:8000    
-
+      - 8010:8000    
+    networks:
+      net:
+        aliases: []
   caddy:
     image: caddy:2.4.5-alpine
     restart: unless-stopped
@@ -20,3 +23,8 @@ services:
       - ./caddy_data:/data
       - ./caddy_config:/config
       - ./functionality/static:/static
+
+networks:
+  net:
+    external: true
+    name: homelab_net
