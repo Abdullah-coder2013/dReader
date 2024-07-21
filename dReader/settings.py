@@ -26,6 +26,9 @@ SECRET_KEY = 'django-insecure-&g#^vqnjg&%^%%2b-=sf3vno#^bg*y_#%jzf74!a2j^5ith*8i
 DEBUG = False
 
 
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+CSRF_TRUSTED_ORIGINS = ["https://dreader.int.munim.net"]
+
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -77,7 +80,7 @@ WSGI_APPLICATION = 'dReader.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db/db.sqlite3',
     }
 }
 
